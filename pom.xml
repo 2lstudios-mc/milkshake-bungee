@@ -1,50 +1,50 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     
-    <!-- Project information -->
     <groupId>dev._2lstudios</groupId>
-    <artifactId>ExamplePlugin</artifactId>
+    <artifactId>Milkshake-Bungee</artifactId>
     <packaging>jar</packaging>
 
-    <!-- Plugin Information -->
-    <name>ExamplePlugin</name>
-    <description>This is just an example plugin</description>
-    <version>0.0.1</version>
-    <url>https://github.com/2lstudios-mc/bukkit-boilerplate</url>
+    <name>Milkshake-Bungee</name>
+    <description>MongoDB ORM for BungeeCord</description>
+    <version>0.2-BETA</version>
+    <url>https://github.com/2lstudios-mc/milkshake-bungee</url>
 
     <properties>
         <author>2LStudios</author>
-        <mainClass>dev._2lstudios.example.ExamplePlugin</mainClass>
+        <mainClass>dev._2lstudios.milkshakebungee.MilkshakeBungee</mainClass>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-   <!-- External repositories -->
     <repositories>
         <repository>
-            <id>spigot-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+            <id>bungeecord-repo</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
+        <repository>
+            <id>2lstudios-repo</id>
+            <url>https://ci.2lstudios.dev/plugin/repository/everything</url>
         </repository>
     </repositories>
 
-    <!-- Dependencies imports -->
     <dependencies>
         <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.18.1-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
+            <groupId>com.dotphin</groupId>
+            <artifactId>milkshake-orm</artifactId>
+            <version>0.2-BETA</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.md-5</groupId>
+            <artifactId>bungeecord-api</artifactId>
+            <version>1.16-R0.4</version>
         </dependency>
     </dependencies>
 
-    <!-- Build settings -->
     <build>
-        <!-- Name of your compiled artifact -->
         <finalName>${artifactId}</finalName>
-        <!-- Directory of .java files -->
         <sourceDirectory>src/main/java</sourceDirectory>
-        <!-- Clean old builds and install dependencies before compile -->
         <defaultGoal>clean install</defaultGoal>
-        <!-- Package files inside resource directory in to the jar -->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -55,9 +55,7 @@
             </resource>
         </resources>
 
-        <!-- Compilation settings starts here -->
         <plugins>
-            <!-- Compile with java 8 -->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
@@ -67,7 +65,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Include dependencies inside jar -->
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.3.0</version>
